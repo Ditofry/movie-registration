@@ -1,0 +1,62 @@
+<!doctype html>
+<html class="no-js\" lang="">
+
+<head>
+  <meta charset="utf-8">
+  <title>World's Best Movie</title>
+  <meta name="description" content="Announcing the greatest movie for the greatest movie club: Willow">
+
+  <style type="text/css">
+    html.showtime { 
+      background-image: url(img/twillow.png), url(img/stars.gif); 
+      background-repeat: no-repeat, repeat;
+      background-position: center center, left top;
+      background-attachment: fixed, scroll;
+      background-size: contain, 100px;
+    }
+
+    div#disclaimer {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      margin-top: -39px;
+      margin-left: -128px;
+      text-align: center;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="disclaimer">
+    <p>This site needs permission to play audio</p>
+    <button onclick="onDisclaimerAcknowledged()">allow</button>
+  </div>
+  
+  <audio>
+    <source src="audio/willow.mp3" type="audio/mp3">
+  </audio>
+
+  <script>
+    const audio = document.querySelector("audio");
+    
+    const startAudioPlayBack = () => {
+      audio.volume = 0.8;
+      audio.play();
+    };
+
+    const removeDisclaimer = () => {
+      document.getElementById("disclaimer").remove();
+    }
+
+    const revealMovie = () => {
+      document.querySelector("html").classList.add("showtime");
+    }
+
+    const onDisclaimerAcknowledged = () => {
+      startAudioPlayBack();
+      removeDisclaimer();
+      revealMovie();
+    }
+  </script>
+</body>
+</html>
